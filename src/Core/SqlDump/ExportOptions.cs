@@ -29,4 +29,9 @@ public class ExportOptions
     /// Gets the excluded columns.
     /// </summary>
     public string[] ExcludedColumns { get; init; } = [];
+
+    /// <summary>
+    /// Gets one or more columns used in watermark sorting.
+    /// </summary>
+    public string[] SortColumns { get; init; } = [];
 }

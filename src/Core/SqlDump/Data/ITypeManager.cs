@@ -3,7 +3,7 @@
 /// <summary>
 /// Represents a type converter.
 /// </summary>
-public interface ITypeConverter
+public interface ITypeManager
 {
     /// <summary>
     /// Gets the target type.

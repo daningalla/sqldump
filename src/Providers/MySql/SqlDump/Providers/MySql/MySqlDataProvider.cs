@@ -1,4 +1,6 @@
-﻿using Dapper;
+﻿using System.Text;
+using System.Text.Json.Nodes;
+using Dapper;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using SqlDump.Core.SqlDump.Collections;
@@ -40,7 +42,7 @@ public sealed class MySqlDataProvider : IDataProvider
         var sql =
             """
             select
-                `COLUMN _NAME` as `Name`,
+                `COLUMN_NAME` as `Name`,
                 `ORDINAL_POSITION` as `OrdinalPosition`,
                 `DATA_TYPE` as `DataType`,
                 `COLUMN_TYPE` as `ColumnSpec`,
@@ -74,7 +76,59 @@ public sealed class MySqlDataProvider : IDataProvider
         {
             throw new ApplicationException($"Invalid excluded column(s): {string.Join(',', excluded)}");
         }
+
+        LogExcludedColumns(_options.ExcludedColumns);
+        LogSchemaColumns(mappedEntries);
         
-        return _cachedMetadata = new ReadOnlyIndex<string, ColumnMetadata>([]);
+        return _cachedMetadata = new ReadOnlyIndex<string, ColumnMetadata>(mappedEntries);
+    }
+
+    public async Task<IQuery> CreateQueryAsync(IEnumerable<KeyValuePair<string, string>> parameters, 
+        CancellationToken cancellationToken)
+    {
+        var columnSchema = await GetColumnMetadataAsync(cancellationToken);
+        var invalidSortColumn = _options
+            .SortColumns
+            .FirstOrDefault(id => !columnSchema.ContainsKey(id));
+
+        if (invalidSortColumn != null)
+        {
+            throw new ApplicationException($"Invalid sort column '{invalidSortColumn}'.");
+        }
+
+        var typedParameters = parameters
+            .Select(parameter =>
+            {
+                if (!columnSchema.TryGetValue(parameter.Key, out var columnMetadata))
+                {
+                    throw new ApplicationException($"Invalid query parameter '{parameter.Key}'.");
+                }
+
+                return new KeyValuePair<string, object>(
+                    parameter.Key,
+                    columnMetadata.TypeManager.ConvertParameter(parameter.Value));
+            })
+            .ToArray();
+        
+        
+    }
+
+    private void LogSchemaColumns(KeyValuePair<string, ColumnMetadata>[] mappedEntries)
+    {
+        foreach (var (key, value) in mappedEntries)
+        {
+            _logger.LogDebug("Column metadata '{key}': {type}, provider null: {nullable}",
+                value.Name,
+                value.ClrType,
+                value.IsNullable);
+        }
+    }
+
+    private void LogExcludedColumns(string[] excludedColumns)
+    {
+        foreach (var name in excludedColumns)
+        {
+            _logger.LogDebug("Excluded column '{name}' from export definition.", name);
+        }
     }
 }

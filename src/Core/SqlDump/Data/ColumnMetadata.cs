@@ -14,6 +14,11 @@ public class ColumnMetadata
     /// Gets the column name.
     /// </summary>
     public string Name { get; init; } = default!;
+    
+    /// <summary>
+    /// Gets the alias of the column.
+    /// </summary>
+    public string? Alias { get; init; }
 
     /// <summary>
     /// Gets the mapped CLR type.
@@ -43,7 +48,7 @@ public class ColumnMetadata
     /// <summary>
     /// Gets the type converter.
     /// </summary>
-    public ITypeConverter TypeConverter { get; init; } = default!;
+    public ITypeManager TypeManager { get; init; } = default!;
 
     /// <inheritdoc />
     public override string ToString() => $"{Name} ({ClrType})";

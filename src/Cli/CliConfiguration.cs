@@ -39,6 +39,11 @@ public static class CliConfiguration
                 arity: Arity.ZeroOrMany,
                 description: "Identifier of a column excluded from the export.",
                 operandSyntax: "IDENTIFIER")
+            .AddOption(x => x.SortColumns,
+                names: ["--order-by"],
+                arity: Arity.OneOrMany,
+                description: "Identifier of a column used in watermark sorting.",
+                operandSyntax: "IDENTIFIER")
             .AddOption(x => x.Verbosity,
                 names: ["-v", "--verbosity"],
                 defaultProvider: () => LogLevel.Information,

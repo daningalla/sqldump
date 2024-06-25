@@ -13,4 +13,6 @@ public sealed class MySqlColumnMetadata
     public int? MaxLength { get; init; }
     public int? Precision { get; init; }
     public int? Scale { get; init; }
+
+    public override string ToString() => $"{ColumnSpec} `{Name}`";
 }

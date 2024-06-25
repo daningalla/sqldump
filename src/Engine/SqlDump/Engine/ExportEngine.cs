@@ -63,6 +63,6 @@ internal sealed class ExportEngine : ICommandHandler<ExportOptions>
     private IDataProvider GetDataProvider(string provider)
     {
         return _dataProviderFactory.Resolve(provider)
-               ?? throw new ApplicationException($"Invalid data provider '{provider}'.");
+               ?? throw  new ApplicationException($"Invalid data provider '{provider}'.");
     }
 }

@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="vertical-cli" Version="1.0.0" />
+    <PackageReference Include="vertical-spectreconsolelogger" Version="0.10.1-dev.20240326.31" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Engine\SqlDump.Engine.csproj" />
+    <ProjectReference Include="..\Providers\MySql\SqlDump.Providers.MySql.csproj" />
+    <ProjectReference Include="..\Writers\Parquet\SqlDump.Writers.Parquet.csproj" />
+  </ItemGroup>
+  
+</Project>

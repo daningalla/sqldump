@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{FAB1355D-2BEB-4648-9DA4-553CF8C33666}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlDump.Cli", "src\Cli\SqlDump.Cli.csproj", "{473DC315-A926-46E2-8971-A9072B57957E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlDump.Core", "src\Core\SqlDump.Core.csproj", "{E580D6C4-84BD-496B-A00F-28A00DFB0E9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlDump.Engine", "src\Engine\SqlDump.Engine.csproj", "{F2C40095-3F7A-4359-BC49-699907FF7127}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Providers", "Providers", "{B65AAFD6-CC60-45BA-B317-5A6BD01116C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlDump.Providers.MySql", "src\Providers\MySql\SqlDump.Providers.MySql.csproj", "{8FEE1EF9-90A8-437C-BAC0-16C55D424A06}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Writers", "Writers", "{7A6CD353-711A-4638-B3F1-DB890A10BB10}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlDump.Writers.Parquet", "src\Writers\Parquet\SqlDump.Writers.Parquet.csproj", "{F9F739A1-CE04-4FE3-BEA6-FA2FE74E54C4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{473DC315-A926-46E2-8971-A9072B57957E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{473DC315-A926-46E2-8971-A9072B57957E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{473DC315-A926-46E2-8971-A9072B57957E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{473DC315-A926-46E2-8971-A9072B57957E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E580D6C4-84BD-496B-A00F-28A00DFB0E9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E580D6C4-84BD-496B-A00F-28A00DFB0E9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E580D6C4-84BD-496B-A00F-28A00DFB0E9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E580D6C4-84BD-496B-A00F-28A00DFB0E9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2C40095-3F7A-4359-BC49-699907FF7127}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2C40095-3F7A-4359-BC49-699907FF7127}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2C40095-3F7A-4359-BC49-699907FF7127}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2C40095-3F7A-4359-BC49-699907FF7127}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FEE1EF9-90A8-437C-BAC0-16C55D424A06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FEE1EF9-90A8-437C-BAC0-16C55D424A06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FEE1EF9-90A8-437C-BAC0-16C55D424A06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FEE1EF9-90A8-437C-BAC0-16C55D424A06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9F739A1-CE04-4FE3-BEA6-FA2FE74E54C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9F739A1-CE04-4FE3-BEA6-FA2FE74E54C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9F739A1-CE04-4FE3-BEA6-FA2FE74E54C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9F739A1-CE04-4FE3-BEA6-FA2FE74E54C4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{473DC315-A926-46E2-8971-A9072B57957E} = {FAB1355D-2BEB-4648-9DA4-553CF8C33666}
+		{E580D6C4-84BD-496B-A00F-28A00DFB0E9B} = {FAB1355D-2BEB-4648-9DA4-553CF8C33666}
+		{F2C40095-3F7A-4359-BC49-699907FF7127} = {FAB1355D-2BEB-4648-9DA4-553CF8C33666}
+		{B65AAFD6-CC60-45BA-B317-5A6BD01116C8} = {FAB1355D-2BEB-4648-9DA4-553CF8C33666}
+		{8FEE1EF9-90A8-437C-BAC0-16C55D424A06} = {B65AAFD6-CC60-45BA-B317-5A6BD01116C8}
+		{7A6CD353-711A-4638-B3F1-DB890A10BB10} = {FAB1355D-2BEB-4648-9DA4-553CF8C33666}
+		{F9F739A1-CE04-4FE3-BEA6-FA2FE74E54C4} = {7A6CD353-711A-4638-B3F1-DB890A10BB10}
+	EndGlobalSection
+EndGlobal
